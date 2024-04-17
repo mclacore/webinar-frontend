@@ -7,7 +7,7 @@ function submitQuery() {
   }
 
   const backendEndpoint = '%%BACKEND_ENDPOINT%%';
-  fetch(`https://${backendEndpoint}/fizzbuzz?n=${n}`, {
+  fetch(`https://${backendEndpoint}?n=${n}`, {
     method: 'GET'
   }).then(response => {
     if (!response.ok) {
