@@ -6,7 +6,8 @@ function submitQuery() {
       return;
   }
 
-  fetch(`http://localhost:8081/fizzbuzz?n=${n}`, {
+  const backendEndpoint = '%%BACKEND_ENDPOINT%%';
+  fetch(`https://${backendEndpoint}/fizzbuzz?n=${n}`, {
     method: 'GET'
   }).then(response => {
     if (!response.ok) {
@@ -25,9 +26,8 @@ function submitQuery() {
 
 function displayResults(data) {
   const resultSection = document.getElementById('resultSection');
-  resultSection.innerHTML = ''; // Clear previous results
+  resultSection.innerHTML = '';
 
-  // Render each result as a paragraph
   data.result.forEach(item => {
       const para = document.createElement('p');
       para.textContent = item;
@@ -37,5 +37,5 @@ function displayResults(data) {
 
 function displayError(message) {
   const resultSection = document.getElementById('resultSection');
-  resultSection.innerHTML = `<p style="color: red;">${message}</p>`; // Display error message in red
+  resultSection.innerHTML = `<p style="color: red;">${message}</p>`;
 }
